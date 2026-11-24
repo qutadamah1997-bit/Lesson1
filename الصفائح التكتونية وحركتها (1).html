@@ -1,0 +1,587 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>الصفائح التكتونية وحركتها</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;600;700&display=swap">
+<style>
+/* Layout: one scrolling lesson, six connected stations; diagrams are the main stage, text stays short. */
+:root{
+  --bg:#f2f5f7; --surface:#ffffff; --ink:#13202a; --muted:#56687a; --line:#d6dee5;
+  --ocean:#1d6fa5; --ocean-soft:#d8e9f5; --crust:#9b6a3a; --crust-soft:#f0e2d2;
+  --magma:#d9482b; --magma-soft:#fbe0d8; --good:#1f8a5b; --good-soft:#d9f0e5; --bad:#b3362a; --bad-soft:#fae0dc;
+  --div:#17877a; --con:#c2410c; --tra:#8a5cc2;
+  --d-sky:#e4f0f8; --d-water:#6fb3dc; --d-oc:#37506a; --d-co:#b58f62; --d-mantle:#ec9a50; --d-magma:#e2492a; --d-slab:#2b4056; --d-ink:#13202a;
+  --font-display:'Readex Pro','IBM Plex Sans Arabic',Tahoma,sans-serif; --font-body:'IBM Plex Sans Arabic',Tahoma,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d151c; --surface:#15212b; --ink:#e7eef3; --muted:#9fb1be; --line:#2a3b48;
+  --ocean:#5fb0e3; --ocean-soft:#16354a; --crust:#d0a273; --crust-soft:#3a2d20;
+  --magma:#ff7a56; --magma-soft:#40201a; --good:#4fcf94; --good-soft:#143a2b; --bad:#ff8b7c; --bad-soft:#40201c;
+  --div:#3ec6b5; --con:#ff9157; --tra:#b995ee;
+  --d-sky:#16293a; --d-water:#2d6e98; --d-oc:#5d7d9c; --d-co:#a8855c; --d-mantle:#c9702a; --d-magma:#ff6a45; --d-slab:#7d9bb8; --d-ink:#e7eef3; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d151c; --surface:#15212b; --ink:#e7eef3; --muted:#9fb1be; --line:#2a3b48;
+  --ocean:#5fb0e3; --ocean-soft:#16354a; --crust:#d0a273; --crust-soft:#3a2d20;
+  --magma:#ff7a56; --magma-soft:#40201a; --good:#4fcf94; --good-soft:#143a2b; --bad:#ff8b7c; --bad-soft:#40201c;
+  --div:#3ec6b5; --con:#ff9157; --tra:#b995ee;
+  --d-sky:#16293a; --d-water:#2d6e98; --d-oc:#5d7d9c; --d-co:#a8855c; --d-mantle:#c9702a; --d-magma:#ff6a45; --d-slab:#7d9bb8; --d-ink:#e7eef3; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.8;direction:rtl;
+  padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:980px;margin-inline:auto}
+.en{direction:ltr;unicode-bidi:isolate;font-family:var(--font-body);display:inline-block}
+h1,h2,h3{font-family:var(--font-display);line-height:1.35;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:700}
+h2{font-size:clamp(1.4rem,3.6vw,1.9rem);font-weight:600}
+h3{font-size:1.1rem;font-weight:600}
+p{margin:0}
+.hero{padding-block:40px 28px}
+.eyebrow{font-size:.85rem;color:var(--muted);letter-spacing:.04em}
+.hero .sub{margin-top:6px;color:var(--muted);font-size:1.05rem}
+.hook{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hook .tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.hook .big{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--magma);line-height:1.1}
+.objectives{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.objectives li{display:flex;gap:10px;align-items:flex-start}
+.objectives li::before{content:"";flex:none;width:10px;height:10px;margin-top:11px;border-radius:50%;background:var(--ocean)}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.nav a{padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;font-size:.9rem;background:var(--surface)}
+.nav a:hover,.nav a:focus-visible{border-color:var(--ocean);outline:2px solid var(--ocean);outline-offset:2px}
+section.station{padding-block:34px;border-top:1px solid var(--line)}
+.stn-head{display:flex;gap:12px;align-items:baseline;margin-bottom:6px}
+.stn-tag{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.lead{color:var(--muted);margin:6px 0 18px;max-width:62ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stack{display:grid;gap:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row>*{min-width:0}
+button,select{font:inherit;color:inherit}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 16px;border-radius:10px;cursor:pointer;min-height:44px}
+.btn:hover{border-color:var(--ocean)}
+.btn:focus-visible,select:focus-visible,input:focus-visible,.chip:focus-visible,.tab:focus-visible{outline:3px solid var(--ocean);outline-offset:2px}
+.btn.primary{background:var(--ocean);border-color:var(--ocean);color:#fff}
+.chip{border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:999px;font-size:.92rem;cursor:pointer;min-height:36px}
+.chip.on{background:var(--ocean-soft);border-color:var(--ocean)}
+.plates{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.plates .chip{cursor:default}
+.sorter{display:grid;gap:10px;margin-top:6px}
+.sorter .item{display:grid;grid-template-columns:minmax(120px,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px}
+.sizes{display:flex;gap:6px;flex-wrap:wrap}
+.item.ok{border-color:var(--good);background:var(--good-soft)}
+.item.no{border-color:var(--bad);background:var(--bad-soft)}
+.fb{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--ocean-soft);min-height:0}
+.fb:empty{display:none}
+.fb.ok{background:var(--good-soft)} .fb.no{background:var(--bad-soft)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card-type{border:2px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;background:var(--surface);text-align:start;width:100%}
+.card-type[aria-pressed="true"]{border-color:var(--ocean);background:var(--ocean-soft)}
+.card-type.co[aria-pressed="true"]{border-color:var(--crust);background:var(--crust-soft)}
+.gauge{height:14px;border-radius:7px;background:var(--line);overflow:hidden;margin-top:8px}
+.gauge i{display:block;height:100%;width:0;transition:width .6s ease;background:var(--ocean)}
+.co .gauge i{background:var(--crust)}
+.num{font-family:var(--font-display);font-size:1.7rem;font-weight:700}
+.diagram{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:var(--d-sky)}
+.diagram text{font-family:var(--font-body);fill:var(--d-ink);font-size:13px}
+.f-sky{fill:var(--d-sky)} .f-water{fill:var(--d-water);opacity:.85} .f-oc{fill:var(--d-oc)} .f-co{fill:var(--d-co)}
+.f-mantle{fill:var(--d-mantle)} .f-magma{fill:var(--d-magma)} .f-slab{fill:var(--d-slab)}
+.arrow{stroke:var(--d-ink);stroke-width:3;fill:none;marker-end:url(#ah)}
+.lbl{font-size:13px;font-weight:600}
+.diagram .lbl{paint-order:stroke;stroke:var(--d-sky);stroke-width:4px;stroke-linejoin:round}
+.f-pa{fill:var(--crust-soft)} .f-pb{fill:var(--ocean-soft)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tab{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 14px;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{color:#fff;border-color:transparent}
+.tab[data-g="div"][aria-selected="true"]{background:var(--div)}
+.tab[data-g="con"][aria-selected="true"]{background:var(--con)}
+.tab[data-g="tra"][aria-selected="true"]{background:var(--tra)}
+.ctrl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px}
+.ctrl input[type=range]{flex:1;min-width:160px;accent-color:var(--ocean);direction:rtl}
+.facts{display:grid;gap:8px;margin-top:14px}
+.fact{display:flex;gap:10px;align-items:flex-start}
+.fact b{flex:none;min-width:84px;color:var(--muted);font-weight:500;font-size:.9rem}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.85rem;color:#fff}
+.badge.div{background:var(--div)} .badge.con{background:var(--con)} .badge.tra{background:var(--tra)}
+.matrix{width:100%;border-collapse:separate;border-spacing:0 8px}
+.matrix th{font-weight:500;color:var(--muted);font-size:.9rem;text-align:center}
+.matrix td:first-child{font-weight:600}
+.cell{width:100%;min-height:44px;border:2px dashed var(--line);border-radius:10px;background:var(--surface);cursor:pointer;font-size:1.2rem}
+.cell.yes{border-style:solid;border-color:var(--ocean);background:var(--ocean-soft)}
+.cell.ok{border-color:var(--good);background:var(--good-soft)} .cell.no{border-color:var(--bad);background:var(--bad-soft)}
+.scroll-x{overflow-x:auto}
+.q{padding:16px 0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{text-align:start;padding:10px 14px;border:2px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer;min-height:44px;width:100%}
+.opt:hover{border-color:var(--ocean)}
+.opt.ok{border-color:var(--good);background:var(--good-soft)}
+.opt.no{border-color:var(--bad);background:var(--bad-soft)}
+.opt[disabled]{cursor:default}
+.score{font-family:var(--font-display);font-size:1.3rem}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:var(--good);transition:width .4s}
+.seq{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.seq .chip.done{background:var(--good-soft);border-color:var(--good)}
+.cls{display:grid;gap:8px;margin-top:10px}
+.cls .item{display:grid;grid-template-columns:minmax(110px,1fr) minmax(130px,auto);gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:12px}
+select{padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);min-height:44px;max-width:100%}
+.takeaways{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.take{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--surface)}
+.take .badge{margin-bottom:8px}
+.note{font-size:.88rem;color:var(--muted);margin-top:10px}
+.mini-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;color:var(--muted);margin-top:8px}
+footer{padding-block:30px 40px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+@media (max-width:700px){
+  body{font-size:16px}
+  .hook,.grid2,.compare,.takeaways{grid-template-columns:1fr}
+  .sorter .item,.cls .item{grid-template-columns:1fr}
+  .fact{flex-direction:column;gap:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<div class="wrap" dir="rtl" lang="ar">
+<header class="hero">
+  <div class="eyebrow">الدرس 1 · <span class="en">Tectonic Plates and its Movement</span></div>
+  <h1>الصفائح التكتونية وحركتها</h1>
+  <p class="sub">كيف تتحرك قطع الغلاف الصخري، وماذا تصنع حين تلتقي أو تفترق أو تنزلق؟</p>
+  <div class="hook">
+    <div class="tile"><div class="big">35 مليون سنة</div><p>قبل هذه المدة لم يكن البحر الميت ولا البحر الأحمر موجودين. فسّر العلماء تكوّنهما بنظرية تكتونية الصفائح.</p></div>
+    <div class="tile"><h3>أهداف التعلّم</h3>
+      <ul class="objectives">
+        <li>أتعرّف نظرية تكتونية الصفائح.</li>
+        <li>أوضّح أثر حركة الصفائح في تغيّر معالم الأرض الرئيسة.</li>
+        <li>أستنتج العلاقة بين حركة الصفائح والزلازل والبراكين وأماكن توزعها.</li>
+      </ul></div>
+  </div>
+  <nav class="nav" aria-label="محطات الدرس">
+    <a href="#s1">1 · النظرية</a><a href="#s2">2 · نوعا الصفائح</a><a href="#s3">3 · الحدود</a><a href="#s4">4 · الزلازل والبراكين</a><a href="#s5">5 · اختبر نفسك</a><a href="#s6">6 · الخلاصة</a>
+  </nav>
+</header>
+
+<section class="station" id="s1">
+  <div class="stn-head"><h2>نظرية تكتونية الصفائح</h2><span class="stn-tag en">Plate Tectonic Theory</span></div>
+  <p class="lead">تؤثر في الأرض عمليات جيولوجية داخلية وخارجية تغيّر معالم سطحها. تشير النظرية إلى أن الغلاف الصخري بنوعيه مقسّم إلى أجزاء عدّة مختلفة في الحجم والشكل، تُسمّى <b>الصفائح التكتونية</b> <span class="en">(Tectonic Plates)</span>، وتتحرك بالنسبة إلى بعضها فوق الغلاف اللدن.</p>
+  <div class="panel">
+    <h3>صنّف الصفائح بحسب المساحة</h3>
+    <p class="note" style="margin-top:2px">تختلف الصفائح في مساحتها: كبيرة، ومتوسطة، وصغيرة. اختر الفئة المناسبة لكل صفيحة، ثم تحقّق.</p>
+    <div class="sorter" id="sorter"></div>
+    <div class="row" style="margin-top:12px"><button class="btn primary" id="sortCheck">تحقّق</button><button class="btn" id="sortReset">إعادة</button></div>
+    <div class="fb" id="sortFb" role="status" aria-live="polite"></div>
+    <p class="note">الصفائح الظاهرة في الشكل (1) من الكتاب: أمريكا الشمالية، أمريكا الجنوبية، أوراسيا، إفريقيا، العربية، الهند، أستراليا، المحيط الهادي، جوان دي فوكا، إسكوتيا.</p>
+  </div>
+</section>
+
+<section class="station" id="s2">
+  <div class="stn-head"><h2>نوعا الصفائح</h2><span class="stn-tag en">Oceanic · Continental</span></div>
+  <p class="lead">تُقسم الصفائح بحسب موقعها إلى صفائح قارية وصفائح محيطية. اختر نوعًا لتقارن بين تركيبه وكثافته.</p>
+  <div class="compare" role="group" aria-label="اختر نوع الصفيحة">
+    <button class="card-type" id="ctOc" aria-pressed="true"><h3>الصفائح المحيطية <span class="en">Oceanic Plates</span></h3><p>جزؤها العلوي من القشرة المحيطية.</p></button>
+    <button class="card-type co" id="ctCo" aria-pressed="false"><h3>الصفائح القارية <span class="en">Continental Plates</span></h3><p>جزؤها العلوي من القشرة القارية.</p></button>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <div class="grid2">
+      <div id="typeInfo" aria-live="polite"></div>
+      <div id="typeSvg"></div>
+    </div>
+    <p class="note">ملاحظة من الكتاب: لا توجد صفيحة مكوّنة من جزء قاري فقط دون وجود جزء محيطي فيها.</p>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>توقّع قبل أن تكتشف</h3>
+    <p>إذا تقاربت صفيحة محيطية وصفيحة قارية، فأيّهما تغطس تحت الأخرى؟</p>
+    <div class="opts" id="predOpts"></div>
+    <div class="fb" id="predFb" role="status" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="station" id="s3">
+  <div class="stn-head"><h2>حركة الصفائح والمظاهر الناتجة منها</h2><span class="stn-tag en">Plates Movement and the Resulting Geological Features</span></div>
+  <p class="lead">تتحرك الصفائح بالنسبة إلى بعضها، فتتكوّن ثلاثة أنواع من الحدود. اختر نوعًا، ثم حرّك الشريط أو شغّل الحركة وراقب ما يتغيّر.</p>
+  <div class="panel">
+    <div class="tabs" role="tablist" aria-label="أنواع الحدود" id="tabs"></div>
+    <div id="stage"></div>
+    <div class="ctrl">
+      <button class="btn primary" id="play" aria-label="تشغيل الحركة">▶ تشغيل</button>
+      <button class="btn" id="reset">إعادة</button>
+      <label for="t" class="note" style="margin:0" id="tLabel">تقدّم الحركة</label>
+      <input type="range" id="t" min="0" max="100" value="0">
+    </div>
+    <div id="cap" class="fb" role="status" aria-live="polite"></div>
+    <div class="facts" id="facts"></div>
+    <p class="note">نموذج مبسّط: الأحجام والسرعات غير حقيقية، والهدف توضيح تسلسل التغيّرات.</p>
+  </div>
+</section>
+
+<section class="station" id="s4">
+  <div class="stn-head"><h2>علاقة حدود الصفائح بالزلازل والبراكين</h2><span class="stn-tag en">Earthquakes and Volcanoes</span></div>
+  <p class="lead">تُعدّ حدود الصفائح مناطق نشطة زلزاليًا وبركانيًا. معظم النشاط الزلزالي والبركاني في العالم يتركز على امتداد حدود صفيحة المحيط الهادي، وتسمى حزام المحيط الهادي الناري.</p>
+  <div class="panel">
+    <div class="row" id="layers" role="group" aria-label="طبقات المخطط"></div>
+    <div id="ring" style="margin-top:12px"></div>
+    <p class="note">مخطط مبسّط يوضح ترتيب الصفائح حول المحيط الهادي، وليس خريطة دقيقة. راجع الشكل (9) في الكتاب للخريطة الأصلية.</p>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>أين تحدث الزلازل والبراكين؟</h3>
+    <p class="note" style="margin-top:2px">انقر الخانات التي تتوقع أن يحدث فيها النشاط، ثم تحقّق.</p>
+    <div class="scroll-x"><table class="matrix" id="matrix"><thead><tr><th></th><th>زلازل</th><th>براكين</th></tr></thead><tbody></tbody></table></div>
+    <div class="row"><button class="btn primary" id="mxCheck">تحقّق</button><button class="btn" id="mxReset">إعادة</button></div>
+    <div class="fb" id="mxFb" role="status" aria-live="polite"></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>الربط بالتاريخ: الأردن</h3>
+    <p>يتعرض الأردن باستمرار لمجموعة من الزلازل التي تعود إلى الحركة على طول صدع البحر الميت التحويلي. ابحث في الإنترنت عن أشهر الزلازل التي حدثت عبر التاريخ في الأردن.</p>
+  </div>
+</section>
+
+<section class="station" id="s5">
+  <div class="stn-head"><h2>اختبر نفسك</h2><span class="stn-tag">يمكنك إعادة المحاولة</span></div>
+  <div class="panel">
+    <div class="row" style="justify-content:space-between"><span class="score" id="score">0 / 0</span><button class="btn" id="qReset">ابدأ من جديد</button></div>
+    <div class="bar" aria-hidden="true"><i id="qBar"></i></div>
+    <div id="quiz"></div>
+  </div>
+</section>
+
+<section class="station" id="s6">
+  <div class="stn-head"><h2>الخلاصة</h2></div>
+  <div class="takeaways">
+    <div class="take"><span class="badge div">متباعدة · بنّاءة</span><p>تبتعد صفيحتان، فيصعد الماغما وتتكوّن قشرة محيطية جديدة. مثال: البحر الأحمر.</p></div>
+    <div class="take"><span class="badge con">متقاربة · هدّامة</span><p>تقترب صفيحتان: طرح (أخدود بحري وأقواس بركانية أو قوس جزر) أو تصادم (سلاسل جبلية). مثال: الهيمالايا.</p></div>
+    <div class="take"><span class="badge tra">تحويلية · محافظة</span><p>تتحرك صفيحتان أفقيًا بجانب بعضهما في اتجاهين متعاكسين. مثال: صدع البحر الميت.</p></div>
+  </div>
+  <p style="margin-top:16px">النشاط الزلزالي والبركاني يتركز على حدود الصفائح، وأكثره على امتداد حدود صفيحة المحيط الهادي (حزام النار).</p>
+</section>
+<footer>تجربة تعليمية مبنية على الدرس الأول من وحدة الصفائح التكتونية (الصفحات 104 إلى 109). الرسوم مبسّطة لأغراض التعلّم.</footer>
+</div>
+<script>
+const $=(s,r=document)=>r.querySelector(s);
+const h=(tag,attrs={},html='')=>{const e=document.createElement(tag);for(const k in attrs){if(k==='class')e.className=attrs[k];else e.setAttribute(k,attrs[k]);}e.innerHTML=html;return e;};
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const U='<span class="en">g/cm³</span>';
+
+/* ---------- Station 1: size sorter ---------- */
+const PL=[{n:'صفيحة المحيط الهادي',a:'L'},{n:'الصفيحة العربية',a:'M'},{n:'صفيحة جوان دي فوكا',a:'S'}];
+const SZ={L:'كبيرة',M:'متوسطة',S:'صغيرة'};
+let sel={};
+function renderSorter(){
+  const box=$('#sorter');box.innerHTML='';
+  PL.forEach((p,i)=>{
+    const it=h('div',{class:'item'},`<span>${p.n}</span>`);
+    const sz=h('div',{class:'sizes'});
+    ['L','M','S'].forEach(k=>{
+      const b=h('button',{class:'chip'+(sel[i]===k?' on':''),type:'button','aria-pressed':String(sel[i]===k)},SZ[k]);
+      b.onclick=()=>{sel[i]=k;renderSorter();const f=$('#sortFb');f.className='fb';f.textContent='';};
+      sz.appendChild(b);
+    });
+    it.appendChild(sz);box.appendChild(it);
+  });
+}
+$('#sortCheck').onclick=()=>{
+  const fb=$('#sortFb');
+  if(PL.some((p,i)=>sel[i]==null)){fb.className='fb';fb.textContent='اختر فئة لكل صفيحة أولًا.';return}
+  const items=[...$('#sorter').children];let ok=0;
+  PL.forEach((p,i)=>{const g=sel[i]===p.a;if(g)ok++;items[i].classList.remove('ok','no');items[i].classList.add(g?'ok':'no');});
+  fb.className='fb '+(ok===3?'ok':'no');
+  fb.textContent=ok===3?'صحيح: المحيط الهادي كبيرة المساحة، والعربية متوسطة، وجوان دي فوكا صغيرة.':`${ok} من 3 صحيحة. راجع الخانات الحمراء وحاول مرة أخرى.`;
+};
+$('#sortReset').onclick=()=>{sel={};renderSorter();const f=$('#sortFb');f.className='fb';f.textContent='';};
+renderSorter();
+
+/* ---------- Station 2: oceanic vs continental ---------- */
+const TYPES={
+  oc:{name:'الصفيحة المحيطية',rock:'البازلت',en:'Basalt',d:3},
+  co:{name:'الصفيحة القارية',rock:'الغرانيت',en:'Granite',d:2.7}
+};
+function typeSvg(k){
+  const sky='<rect width="300" height="170" class="f-sky"/>';
+  const mantle='<rect y="115" width="300" height="55" class="f-mantle"/><text x="150" y="150" text-anchor="middle" class="lbl">الغلاف اللدن</text>';
+  if(k==='oc')return `<svg class="diagram" viewBox="0 0 300 170" role="img" aria-label="مقطع في صفيحة محيطية: ماء فوق قشرة محيطية رقيقة"> ${sky}<rect y="45" width="300" height="40" class="f-water"/><rect y="85" width="300" height="30" class="f-oc"/>${mantle}<text x="150" y="105" text-anchor="middle" class="lbl">قشرة محيطية</text><text x="150" y="70" text-anchor="middle" class="lbl">ماء المحيط</text></svg>`;
+  return `<svg class="diagram" viewBox="0 0 300 170" role="img" aria-label="مقطع في صفيحة قارية: قشرة قارية أسمك"> ${sky}<polygon points="0,70 70,30 120,55 180,20 240,50 300,40 300,115 0,115" class="f-co"/>${mantle}<text x="150" y="98" text-anchor="middle" class="lbl">قشرة قارية</text></svg>`;
+}
+function showType(k){
+  const t=TYPES[k];
+  $('#ctOc').setAttribute('aria-pressed',String(k==='oc'));$('#ctCo').setAttribute('aria-pressed',String(k==='co'));
+  $('#typeInfo').className=k==='co'?'co':'';
+  $('#typeInfo').innerHTML=`<h3>${t.name}</h3><div class="fact" style="margin-top:8px"><b>الصخور</b><span>تتكوّن بشكل أساسي من ${t.rock} <span class="en">(${t.en})</span></span></div><div class="fact"><b>الكثافة</b><span><span class="num">${t.d}</span> ${U}</span></div><div class="gauge" aria-hidden="true"><i id="gi"></i></div>`;
+  requestAnimationFrame(()=>{const g=$('#gi');if(g)g.style.width=(t.d/3*100)+'%';});
+  $('#typeSvg').innerHTML=typeSvg(k);
+}
+$('#ctOc').onclick=()=>showType('oc');$('#ctCo').onclick=()=>showType('co');showType('oc');
+
+const pr=$('#predOpts');
+[['oc','الصفيحة المحيطية'],['co','الصفيحة القارية']].forEach(([k,txt])=>{
+  const b=h('button',{class:'opt',type:'button'},txt);
+  b.onclick=()=>{
+    const fb=$('#predFb');[...pr.children].forEach(x=>x.classList.remove('ok','no'));
+    if(k==='oc'){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=`صحيح. كثافة المحيطية 3 ${U} وكثافة القارية 2.7 ${U}، فالأكثف تغطس تحت الأقل كثافة. ستراها تحدث في المحطة التالية.`;}
+    else{b.classList.add('no');fb.className='fb no';fb.innerHTML=`قارن بين الكثافتين: 3 مقابل 2.7 ${U}. أيّ الصفيحتين أثقل؟ جرّب مرة أخرى.`;}
+  };
+  pr.appendChild(b);
+});
+/* ---------- Station 3: boundary explorer ---------- */
+const DEFS='<defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--d-ink)"/></marker></defs>';
+const tx=(x,y,s)=>`<text x="${x}" y="${y}" text-anchor="middle" class="lbl">${s}</text>`;
+const ar=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="arrow"/>`;
+const SKY='<rect width="640" height="300" class="f-sky"/>';
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+
+function stageOf(T){return T<25?1:T<50?2:T<75?3:4}
+function sDiv(T){
+  const s=stageOf(T);
+  const G={1:[300,340],2:[290,350],3:[230,410],4:[150,490]}[s];
+  let o=SKY+'<rect y="190" width="640" height="110" class="f-mantle"/>';
+  o+=`<ellipse cx="320" cy="262" rx="${60+s*28}" ry="30" class="f-magma"/>`;
+  if(s===1){
+    o+='<path d="M0 125 Q160 125 320 98 Q480 125 640 125 L640 190 L0 190Z" class="f-co"/>';
+    o+='<path d="M302 100 l8 22 -6 20 8 24 M338 102 l-6 20 7 22" stroke="var(--d-ink)" stroke-width="2" fill="none"/>';
+    o+=tx(120,160,'غلاف صخري قاري')+tx(320,288,'ماغما');
+  }else{
+    const [gl,gr]=G;
+    const eL=s===2?250:s===3?210:130, eR=640-eL;
+    if(s>=3){
+      const wt=s===3?135:125;
+      o+=`<rect x="${gl-6}" y="${wt}" width="${gr-gl+12}" height="${170-wt}" class="f-water"/>`;
+      o+=`<rect x="${gl}" y="170" width="${gr-gl}" height="20" class="f-oc"/>`;
+    }else{o+=`<rect x="${gl}" y="150" width="${gr-gl}" height="40" class="f-co"/>`;}
+    o+=`<polygon points="0,120 ${eL},120 ${gl},150 ${gl},190 0,190" class="f-co"/><polygon points="640,120 ${eR},120 ${gr},150 ${gr},190 640,190" class="f-co"/>`;
+    if(s===2)o+=tx(320,112,'وادٍ متصدّع');
+    if(s===3)o+=tx(320,124,'بحر ضيق')+tx(320,185,'قشرة محيطية جديدة');
+    if(s===4)o+=tx(320,100,'محيط مثل الأطلسي')+tx(320,185,'قشرة محيطية جديدة');
+    if(s<4)o+=tx(320,288,'ماغما');
+  }
+  const [gl,gr]=G;
+  o+=ar(gl-15,160,gl-75,160)+ar(gr+15,160,gr+75,160);
+  if(s<4)o+=ar(320,235,320,205);
+  return o;
+}
+function subBase(t,cont){
+  const d=60+180*t,ex=290+d,ey=150+.62*d;
+  const slab=`<polygon points="0,150 290,150 ${ex},${ey} ${ex},${ey+32} 290,182 0,182" class="f-oc"/>`.replace(/(\d+\.\d+)/g,m=>(+m).toFixed(1));
+  return {d,ex,ey,slab};
+}
+function sSub1(T){
+  const t=T/100,{slab}=subBase(t);
+  let o=SKY+'<rect y="110" width="640" height="40" class="f-water"/><rect y="150" width="640" height="150" class="f-mantle"/>';
+  o+='<polygon points="310,150 640,150 640,182 342,182 310,162" class="f-slab"/>'+slab;
+  const tr=150+22*clamp(t*3);
+  o+=`<polygon points="278,150 300,${tr} 322,150" class="f-water"/>`;
+  if(t>.12)o+=`<polygon points="352,196 372,204 440,150 418,150" class="f-magma" style="opacity:${clamp((t-.12)*3)}"/>`;
+  const p1=160-90*t;if(p1<150)o+=`<polygon points="400,150 430,${p1} 460,150" class="f-co"/>`;
+  const p2=170-95*t;if(p2<150)o+=`<polygon points="472,150 500,${p2} 528,150" class="f-co"/>`;
+  if(t>.55)o+=`<circle cx="430" cy="${p1+3}" r="4" class="f-magma"/>`;
+  o+=ar(60,75,150,75)+ar(600,75,520,75)+tx(105,98,'أقدم وأكثف')+tx(560,98,'أحدث وأقل كثافة');
+  o+=tx(295,134,'أخدود بحري');
+  if(t>.72)o+=tx(465,50,'قوس الجزر');
+  return o;
+}
+function sSub2(T){
+  const t=T/100,{slab}=subBase(t);
+  let o=SKY+'<rect y="120" width="330" height="30" class="f-water"/><rect y="150" width="640" height="150" class="f-mantle"/>';
+  o+='<polygon points="292,150 325,115 640,115 640,190 355,190 310,162" class="f-co"/>'+slab;
+  const tr=150+22*clamp(t*3);
+  o+=`<polygon points="276,150 298,${tr} 320,150" class="f-water"/>`;
+  if(t>.12)o+=`<polygon points="360,198 382,208 462,118 438,118" class="f-magma" style="opacity:${clamp((t-.12)*3)}"/>`;
+  const a=115-60*t,b=115-85*t;
+  o+=`<polygon points="420,115 450,${a} 480,115" class="f-co"/><polygon points="500,115 530,${b} 560,115" class="f-co"/>`;
+  if(t>.5)o+=`<circle cx="450" cy="${a+3}" r="4" class="f-magma"/><circle cx="530" cy="${b+3}" r="4" class="f-magma"/>`;
+  o+=ar(60,60,150,60)+ar(610,60,540,60)+tx(105,83,'صفيحة محيطية أكثف')+tx(575,83,'صفيحة قارية');
+  o+=tx(250,138,'أخدود بحري');
+  if(t>.6)o+=tx(490,50,'أقواس بركانية');
+  return o;
+}
+function sCol(T){
+  const t=T/100,g=160*(1-t),xl=320-g/2,xr=320+g/2;
+  let o=SKY+'<rect y="200" width="640" height="100" class="f-mantle"/>';
+  if(g>0.5)o+=`<rect x="${xl}" y="130" width="${g}" height="70" class="f-water"/><rect x="${xl}" y="185" width="${g}" height="15" class="f-oc"/>`;
+  o+=`<rect x="0" y="130" width="${xl}" height="70" class="f-co"/><rect x="${xr}" y="130" width="${640-xr}" height="70" class="f-co"/>`;
+  const w=30+130*t,H=110*t,r=60*t;
+  o+=`<polygon points="${320-w},130 ${320-w*.5},${130-H*.55} ${320-w*.2},${130-H*.8} 320,${130-H} ${320+w*.25},${130-H*.7} ${320+w*.55},${130-H*.5} ${320+w},130" class="f-co"/>`;
+  if(t>.2)o+=`<polygon points="${320-w*.7},200 320,${200+r} ${320+w*.7},200" class="f-co"/>`;
+  o+=ar(60,80,150,80)+ar(580,80,490,80)+tx(105,103,'صفيحة قارية')+tx(535,103,'صفيحة قارية');
+  if(t>.7)o+=tx(320,28,'سلاسل جبلية');
+  return o;
+}
+function sTra(T){
+  const t=T/100,o=70*t;
+  let s=`<rect width="640" height="300" class="f-pa"/>`;
+  s+=`<g transform="translate(0,${-o})"><rect x="0" y="-100" width="318" height="500" class="f-pa"/><line x1="0" y1="150" x2="318" y2="150" stroke="var(--d-ink)" stroke-width="7"/><line x1="0" y1="150" x2="318" y2="150" stroke="var(--d-sky)" stroke-width="2" stroke-dasharray="10 8"/></g>`;
+  s+=`<g transform="translate(0,${o})"><rect x="322" y="-100" width="318" height="500" class="f-pb"/><line x1="322" y1="150" x2="640" y2="150" stroke="var(--d-ink)" stroke-width="7"/><line x1="322" y1="150" x2="640" y2="150" stroke="var(--d-sky)" stroke-width="2" stroke-dasharray="10 8"/></g>`;
+  s+=`<line x1="320" y1="0" x2="320" y2="300" stroke="var(--magma)" stroke-width="4" stroke-dasharray="12 6"/>`;
+  s+=ar(160,270,160,200)+ar(480,30,480,100)+tx(160,292,'تتحرك للأعلى')+tx(480,22,'تتحرك للأسفل');
+  if(t>.3)s+=tx(320,138,'الصدع');
+  return s;
+}
+const BT=[
+ {k:'div',g:'div',tab:'متباعدة',name:'الحدود المتباعدة',en:'Divergent Boundaries',nick:'الحدود البنّاءة',fn:sDiv,lab:'مراحل التباعد',
+  alt:'مقطع يوضح تباعد صفيحتين وتكوّن وادٍ متصدّع ثم بحر ثم محيط',
+  cap:T=>({1:'اندفاع الماغما إلى أسفل الغلاف الصخري القاري يمدّده، ومن ثم تقوّسه وتشقّقه.',2:'ينقسم الغلاف الصخري القاري، ويتكوّن وادٍ متصدّع.',3:'تستمر الماغما بالاندفاع إلى الأعلى مكوّنة قشرة محيطية جديدة، ويُملأ الغلاف الصخري المحيطي الجديد بالماء فيتكوّن بحر ضيق. يشكل كل جزء من الأجزاء المتباعدة صفيحة مستقلة.',4:'تستمر الصفائح بالتباعد عن بعضها، فيتكوّن محيط مثل المحيط الأطلسي.'}[stageOf(T)]),
+  f:[['التعريف','تتكوّن عندما تتباعد صفيحتان عن بعضهما.'],['المظاهر','وادٍ متصدّع، ثم بحر ضيق، ثم محيط.'],['مثال','البحر الأحمر، نتج من تباعد الصفيحة العربية عن الصفيحة الإفريقية.']]},
+ {k:'sub1',g:'con',tab:'طرح: محيطية ومحيطية',name:'حدود الطرح (محيطية مع محيطية)',en:'Subduction Boundaries',nick:'الحدود الهدّامة',fn:sSub1,lab:'تقدّم الحركة',
+  alt:'مقطع يوضح غطس صفيحة محيطية تحت صفيحة محيطية أخرى وتكوّن أخدود بحري وقوس جزر',
+  cap:T=>T<15?'تقترب صفيحة محيطية من صفيحة محيطية أخرى.':T<50?'تغطس الصفيحة الأكبر عمرًا والأكثر كثافة تحت الأحدث عمرًا والأقل كثافة، فيتكوّن وادٍ ضيق وعميق هو الأخدود البحري.':T<75?'تنصهر الصفيحة الغاطسة مع رسوبيات قاع المحيط، فتتكوّن ماغما تندفع إلى الأعلى.':'تتكوّن جزر بركانية، ومع استمرار حركة الصفيحة تنتج سلسلة جزر على شكل قوس موازٍ للأخدود البحري، تسمى قوس الجزر.',
+  f:[['التعريف','تقارب صفيحة محيطية من صفيحة محيطية أخرى.'],['المظاهر','أخدود بحري، جزر بركانية، قوس الجزر.']]},
+ {k:'sub2',g:'con',tab:'طرح: محيطية وقارية',name:'حدود الطرح (محيطية مع قارية)',en:'Subduction Boundaries',nick:'الحدود الهدّامة',fn:sSub2,lab:'تقدّم الحركة',
+  alt:'مقطع يوضح غطس صفيحة محيطية تحت صفيحة قارية وتكوّن أخدود بحري وأقواس بركانية',
+  cap:T=>T<15?'تقترب صفيحة محيطية من صفيحة قارية.':T<50?'تغطس الصفيحة المحيطية الأكثر كثافة تحت الصفيحة القارية الأقل كثافة، فيتكوّن أخدود بحري.':T<75?'تنصهر الصفيحة المحيطية مع رسوبيات قاع المحيط، فتتكوّن ماغما تندفع إلى الأعلى.':'تتشكل أقواس بركانية على الصفيحة القارية.',
+  f:[['التعريف','تقارب صفيحة محيطية من صفيحة قارية، فتغطس المحيطية الأكثر كثافة.'],['المظاهر','أخدود بحري، أقواس بركانية.']]},
+ {k:'col',g:'con',tab:'تصادم',name:'حدود التصادم',en:'Collision Boundaries',nick:'الحدود الهدّامة',fn:sCol,lab:'تقدّم الحركة',
+  alt:'مقطع يوضح تصادم صفيحتين قاريتين وتكوّن سلاسل جبلية',
+  cap:T=>T<25?'تقترب صفيحة قارية من صفيحة قارية أخرى.':T<75?'تتصادم الصفيحتان القاريتان فتُطوى الصخور.':'تتكوّن سلاسل جبلية.',
+  f:[['التعريف','تقارب صفيحة قارية من صفيحة قارية أخرى.'],['المظاهر','طيّ الصخور وتكوّن سلاسل جبلية.'],['مثال','جبال الهيمالايا، نتيجة تصادم صفيحة الهند مع صفيحة أوراسيا.']]},
+ {k:'tra',g:'tra',tab:'تحويلية',name:'الحدود التحويلية',en:'Transform Boundaries',nick:'الحدود المحافظة',fn:sTra,lab:'تقدّم الحركة',
+  alt:'منظر علوي لصفيحتين تنزلقان أفقيًا في اتجاهين متعاكسين على طول صدع، فينزاح طريق كان مستقيمًا',
+  cap:T=>T<10?'صفيحتان متجاورتان يعبر الطريق حدّهما بخط مستقيم.':'تتحرك الصفيحتان أفقيًا بجانب بعضهما في اتجاهين متعاكسين على طول الصدع. لاحظ كيف انزاح الطريق الذي كان مستقيمًا.',
+  f:[['التعريف','تتحرك فيها صفيحتان بعضهما بجانب بعض أفقيًا في اتجاهين متعاكسين، وتسمى أيضًا الحدود الجانبية.'],['المظاهر','صدع فاصل بين الصفيحتين.'],['مثال','صدع البحر الميت التحويلي.']]}
+];
+let cur=0,T=0,raf=null;
+function stop(){if(raf){cancelAnimationFrame(raf);raf=null}$('#play').textContent='▶ تشغيل'}
+function draw(){
+  const b=BT[cur];
+  $('#stage').innerHTML=`<svg class="diagram" viewBox="0 0 640 300" role="img" aria-label="${b.alt}">${DEFS}${b.fn(T)}</svg>`;
+  const c=$('#cap');c.className='fb';c.textContent=b.cap(T);
+  $('#t').value=T;
+}
+function drawFacts(){
+  const b=BT[cur];
+  $('#tLabel').textContent=b.lab;
+  $('#facts').innerHTML=`<div class="row"><h3>${b.name}</h3><span class="en note" style="margin:0">${b.en}</span><span class="badge ${b.g}">${b.nick}</span></div>`+b.f.map(([a,c])=>`<div class="fact"><b>${a}</b><span>${c}</span></div>`).join('');
+}
+const tabs=$('#tabs');
+BT.forEach((b,i)=>{
+  const e=h('button',{class:'tab',role:'tab',type:'button','data-g':b.g,'aria-selected':String(i===0)},b.tab);
+  e.onclick=()=>{cur=i;T=0;stop();[...tabs.children].forEach((x,j)=>x.setAttribute('aria-selected',String(j===i)));draw();drawFacts();};
+  tabs.appendChild(e);
+});
+$('#t').oninput=e=>{T=+e.target.value;stop();draw();};
+$('#reset').onclick=()=>{T=0;stop();draw();};
+$('#play').onclick=()=>{
+  if(raf){stop();return}
+  if(T>=100)T=0;
+  $('#play').textContent='⏸ إيقاف';
+  const step=()=>{T=Math.min(100,T+.35);draw();if(T>=100){stop();return}raf=requestAnimationFrame(step)};
+  raf=requestAnimationFrame(step);
+};
+draw();drawFacts();
+/* ---------- Station 4: Pacific ring (schematic) + matrix ---------- */
+const LY={ring:true,eq:true,vol:true};
+function ringSvg(){
+  const cx=320,cy=185,rx=205,ry=120;
+  let o=`<rect width="640" height="370" class="f-sky"/>`;
+  if(LY.ring)o+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="var(--magma)" stroke-opacity=".3" stroke-width="40"/><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="var(--magma)" stroke-width="2" stroke-dasharray="6 5"/>`;
+  const pt=a=>[cx+rx*Math.cos(a),cy+ry*Math.sin(a)];
+  if(LY.eq)for(let i=0;i<22;i++){const [x,y]=pt(i*Math.PI*2/22+((i%3)-1)*.04);o+=`<text x="${x}" y="${y+6}" text-anchor="middle" style="font-size:17px;fill:var(--magma)">★</text>`;}
+  if(LY.vol)for(let i=0;i<16;i++){const [x,y]=pt(i*Math.PI*2/16+.11+((i%2)?.05:-.03));o+=`<polygon points="${x-7},${y+6} ${x},${y-8} ${x+7},${y+6}" style="fill:var(--d-ink)"/>`;}
+  o+=tx(cx,cy+4,'صفيحة المحيط الهادي')+tx(100,58,'صفيحة أوراسيا')+tx(540,58,'صفيحة أمريكا الشمالية')+tx(548,345,'صفيحة أمريكا الجنوبية')+tx(92,345,'صفيحة أستراليا');
+  return `<svg class="diagram" viewBox="0 0 640 370" role="img" aria-label="مخطط مبسّط لحزام المحيط الهادي الناري يحيط بصفيحة المحيط الهادي، وتتوزع عليه الزلازل والبراكين">${o}</svg><div class="mini-legend"><span>★ زلزال</span><span>▲ بركان</span><span>الحزام: منطقة النشاط الأعلى</span></div>`;
+}
+function drawRing(){$('#ring').innerHTML=ringSvg();}
+[['ring','حزام النار'],['eq','الزلازل ★'],['vol','البراكين ▲']].forEach(([k,txt])=>{
+  const b=h('button',{class:'chip on',type:'button','aria-pressed':'true'},txt);
+  b.onclick=()=>{LY[k]=!LY[k];b.classList.toggle('on',LY[k]);b.setAttribute('aria-pressed',String(LY[k]));drawRing();};
+  $('#layers').appendChild(b);
+});
+drawRing();
+
+const MX=[['حدود متباعدة',[1,1]],['حدود متقاربة',[1,1]],['حدود تحويلية',[1,0]]];
+let mxSel=MX.map(()=>[0,0]);
+function drawMx(){
+  const tb=$('#matrix tbody');tb.innerHTML='';
+  MX.forEach(([n],r)=>{
+    const tr=h('tr',{},`<td>${n}</td>`);
+    [0,1].forEach(c=>{
+      const td=h('td');
+      const b=h('button',{class:'cell'+(mxSel[r][c]?' yes':''),type:'button','aria-pressed':String(!!mxSel[r][c]),'aria-label':`${n} - ${c?'براكين':'زلازل'}`},mxSel[r][c]?'✓':'');
+      b.onclick=()=>{mxSel[r][c]=mxSel[r][c]?0:1;drawMx();const f=$('#mxFb');f.className='fb';f.textContent='';};
+      td.appendChild(b);tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+}
+$('#mxCheck').onclick=()=>{
+  const cells=[...document.querySelectorAll('#matrix .cell')];let wrong=0;
+  MX.forEach(([,ans],r)=>[0,1].forEach(c=>{const b=cells[r*2+c];const ok=!!mxSel[r][c]===!!ans[c];if(!ok)wrong++;b.classList.remove('ok','no');b.classList.add(ok?'ok':'no');}));
+  const f=$('#mxFb');
+  if(!wrong){f.className='fb ok';f.textContent='صحيح: الزلازل تتوزع على حدود الصفائح، والحدود المتقاربة والمتباعدة نشطة بركانيًا.';}
+  else{f.className='fb no';f.textContent=`${wrong} خانة غير صحيحة (باللون الأحمر). تلميح: الزلازل مرتبطة بحدود الصفائح عمومًا، أما البراكين فتنشط عند نوعين فقط من الحدود.`;}
+};
+$('#mxReset').onclick=()=>{mxSel=MX.map(()=>[0,0]);drawMx();const f=$('#mxFb');f.className='fb';f.textContent='';};
+drawMx();
+/* ---------- Station 5: knowledge check ---------- */
+const E='<span class="en">g/cm³</span>';
+const MCQ=[
+ {q:'ماذا تقول نظرية تكتونية الصفائح؟',o:['الصفائح تتحرك فوق الغلاف الجوي','الغلاف الصخري مقسّم إلى أجزاء مختلفة في الحجم والشكل تتحرك بالنسبة إلى بعضها','الغلاف الصخري كتلة واحدة ثابتة','القارات وحدها هي التي تتحرك'],c:1,hint:'فكّر في معنى كلمة «صفائح»: قطع من الغلاف الصخري.',why:'تتحرك الصفائح التكتونية بالنسبة إلى بعضها فوق الغلاف اللدن.'},
+ {q:'ما الفرق الصحيح بين الصفيحتين؟',o:[`المحيطية: غرانيت وكثافة 2.7 ${E}. القارية: بازلت وكثافة 3 ${E}`,`القارية: غرانيت وكثافة 2.7 ${E}. المحيطية: بازلت وكثافة 3 ${E}`,'كلتاهما بازلت وكثافتهما متساوية'],c:1,hint:'تذكّر المقارنة في المحطة الثانية.',why:`القارية أقل كثافة (2.7 ${E}) وصخورها غرانيتية، والمحيطية أكثف (3 ${E}) وصخورها بازلتية.`},
+ {q:'ظهر وادٍ متصدّع في قارة، ثم امتلأ بالماء فصار بحرًا ضيقًا. أي نوع من الحدود سبّب ذلك؟',o:['تحويلية','متباعدة','متقاربة'],c:1,hint:'ما الذي يحدث للصفيحتين عندما ينقسم الغلاف الصخري إلى جزأين؟',why:'تباعد الصفيحتين هو ما يشق الغلاف الصخري، كما حدث في البحر الأحمر.'},
+ {q:'ما سبب تكوّن جبال الهيمالايا؟',o:['تباعد صفيحتين محيطيتين','تصادم صفيحة الهند مع صفيحة أوراسيا','غطس صفيحة محيطية تحت صفيحة محيطية','حركة أفقية على صدع تحويلي'],c:1,hint:'الجبال الضخمة تنتج من تقارب قارتين، وليس قارة ومحيط.',why:'عند تصادم صفيحتين قاريتين تُطوى الصخور وتتكوّن السلاسل الجبلية.'},
+ {q:'تقاربت صفيحتان محيطيتان، فغطست إحداهما. ماذا يتكوّن مع استمرار الحركة؟',o:['سلسلة جبلية مطويّة','صدع تحويلي','قوس الجزر'],c:2,hint:'الماغما تصعد وتشكّل جزرًا بركانية تحت الماء ثم فوقه.',why:'تنتج سلسلة جزر بركانية على شكل قوس موازٍ للأخدود البحري.'},
+ {q:'أفكّر: أيّهما أكبر عمرًا، القشرة المحيطية أم القارية؟ ولماذا؟',o:['المحيطية، لأنها أكثف','القارية، لأن المحيطية تتجدد: تتكوّن عند الحدود المتباعدة وتغطس عند الحدود المتقاربة'],c:1,hint:'اسأل: ماذا يحدث للقشرة المحيطية عند حدود الطرح؟',why:'القشرة المحيطية تُبنى وتُطرح باستمرار، أما القارية فأقل كثافة فلا تغطس بسهولة وتبقى أطول.'},
+ {q:'لماذا تسمى الحدود التحويلية «المحافظة»؟',o:['لأنه لا تُبنى عندها قشرة جديدة ولا تُهدم قشرة، فالصفيحتان تنزلقان بجانب بعضهما','لأن الصفائح عندها لا تتحرك أبدًا','لأن الماغما تتجمع عندها وتتصلب'],c:0,hint:'قارن: المتباعدة تبني قشرة، والمتقاربة تهدمها. ماذا تفعل التحويلية؟',why:'المتباعدة بنّاءة، والمتقاربة هدّامة، والتحويلية تحافظ على القشرة كما هي.'},
+ {q:'أي الحدود التالية نشطة بركانيًا؟',o:['الحدود التحويلية فقط','الحدود المتقاربة والمتباعدة','لا توجد حدود نشطة بركانيًا'],c:1,hint:'عد إلى الجدول في محطة الزلازل والبراكين.',why:'الحدود المتقاربة والمتباعدة للصفائح نشطة بركانيًا.'},
+ {q:'يتركز معظم النشاط الزلزالي والبركاني في العالم على امتداد حدود أي صفيحة؟',o:['صفيحة أوراسيا','صفيحة إفريقيا','صفيحة المحيط الهادي'],c:2,hint:'تذكّر اسم الحزام الذي رسمته على المخطط.',why:'حدود صفيحة المحيط الهادي تُسمى حزام المحيط الهادي الناري.'},
+ {q:'تقاربت صفيحة محيطية وصفيحة قارية. ماذا تتوقع أن يتكوّن على الصفيحة القارية؟',o:['أقواس بركانية','وادٍ متصدّع','محيط جديد'],c:0,hint:'ما مصير الصفيحة الأكثف عند التقارب؟',why:'تغطس المحيطية وتنصهر، فتصعد الماغما وتتشكل أقواس بركانية.'}
+];
+const SEQ={q:'رتّب مراحل تكوّن المحيط عند الحدود المتباعدة بالنقر عليها بالترتيب الصحيح.',s:['اندفاع الماغما يمدّد الغلاف الصخري القاري ويقوّسه ويشقّقه','انقسام الغلاف الصخري وتكوّن وادٍ متصدّع','تكوّن قشرة محيطية جديدة وامتلاء الوادي بالماء فيتكوّن بحر ضيق','استمرار التباعد فيتكوّن محيط مثل الأطلسي'],shuf:[2,0,3,1]};
+const CLS={q:'صنّف كل مظهر أو مثال بحسب نوع الحدود الذي يرتبط به.',o:['اختر…','متباعدة','طرح','تصادم','تحويلية'],it:[['البحر الأحمر',1],['جبال الهيمالايا',3],['قوس الجزر',2],['صدع البحر الميت',4],['أخدود بحري',2],['وادٍ متصدّع',1]]};
+const N=MCQ.length+2;
+let st;
+function upd(){
+  const done=st.filter(x=>x.done).length,sc=st.filter(x=>x.done&&x.first).length;
+  $('#score').textContent=`${sc} / ${N}`;$('#qBar').style.width=(done/N*100)+'%';
+  if(done===N){$('#final').className='fb ok';$('#final').textContent=sc===N?'ممتاز! أجبت عن كل الأسئلة من المحاولة الأولى.':`أنهيت الاختبار. أجبت ${sc} من ${N} من المحاولة الأولى. يمكنك البدء من جديد لتحسين نتيجتك.`;}
+  else{$('#final').className='fb';$('#final').textContent='';}
+}
+function qBox(i,title){const d=h('div',{class:'q'});d.appendChild(h('p',{},`<b>${i+1}.</b> ${title}`));return d;}
+function renderQuiz(){
+  st=Array.from({length:N},()=>({done:false,first:true}));
+  const root=$('#quiz');root.innerHTML='';
+  MCQ.forEach((m,i)=>{
+    const d=qBox(i,m.q),ops=h('div',{class:'opts'}),fb=h('div',{class:'fb',role:'status','aria-live':'polite'});
+    m.o.forEach((t,j)=>{
+      const b=h('button',{class:'opt',type:'button'},t);
+      b.onclick=()=>{
+        if(st[i].done)return;
+        if(j===m.c){b.classList.add('ok');st[i].done=true;[...ops.children].forEach(x=>x.disabled=true);fb.className='fb ok';fb.innerHTML='صحيح. '+m.why;}
+        else{b.classList.add('no');b.disabled=true;st[i].first=false;fb.className='fb no';fb.innerHTML='ليست الإجابة الصحيحة. '+m.hint;}
+        upd();
+      };
+      ops.appendChild(b);
+    });
+    d.appendChild(ops);d.appendChild(fb);root.appendChild(d);
+  });
+  /* sequence */
+  {const i=MCQ.length,d=qBox(i,SEQ.q),box=h('div',{class:'seq'}),fb=h('div',{class:'fb',role:'status','aria-live':'polite'});let next=0;
+    SEQ.shuf.forEach(k=>{
+      const b=h('button',{class:'chip',type:'button',style:'text-align:start;border-radius:12px'},SEQ.s[k]);
+      b.onclick=()=>{
+        if(st[i].done||b.classList.contains('done'))return;
+        if(k===next){b.classList.add('done');b.textContent=`${next+1}. ${SEQ.s[k]}`;next++;fb.className='fb ok';fb.textContent=next===4?'صحيح. هذا هو تسلسل تكوّن المحيط.':'صحيح، تابع.';if(next===4)st[i].done=true;}
+        else{st[i].first=false;fb.className='fb no';fb.textContent='ليست هذه الخطوة التالية. فكّر: ما الذي يحدث أولًا للغلاف الصخري القاري؟';}
+        upd();
+      };
+      box.appendChild(b);
+    });
+    d.appendChild(box);d.appendChild(fb);root.appendChild(d);}
+  /* classify */
+  {const i=MCQ.length+1,d=qBox(i,CLS.q),box=h('div',{class:'cls'}),fb=h('div',{class:'fb',role:'status','aria-live':'polite'});const sels=[];
+    CLS.it.forEach(([n],r)=>{
+      const row=h('div',{class:'item'},`<label for="cl${r}">${n}</label>`);
+      const s=h('select',{id:'cl'+r});CLS.o.forEach((t,k)=>s.appendChild(h('option',{value:k},t)));
+      s.onchange=()=>{row.classList.remove('ok','no');};
+      sels.push(s);row.appendChild(s);box.appendChild(row);
+    });
+    const btn=h('button',{class:'btn primary',type:'button',style:'margin-top:10px'},'تحقّق');
+    btn.onclick=()=>{
+      if(st[i].done)return;
+      if(sels.some(s=>s.value==='0')){fb.className='fb';fb.textContent='اختر نوعًا لكل عنصر أولًا.';return}
+      let bad=0;[...box.children].forEach((row,r)=>{const ok=+sels[r].value===CLS.it[r][1];if(!ok)bad++;row.classList.remove('ok','no');row.classList.add(ok?'ok':'no');});
+      if(!bad){st[i].done=true;sels.forEach(s=>s.disabled=true);fb.className='fb ok';fb.textContent='صحيح. الأخدود البحري وقوس الجزر ينتجان من الطرح، والوادي المتصدّع والبحر الأحمر من التباعد.';}
+      else{st[i].first=false;fb.className='fb no';fb.textContent=`${bad} عنصر غير صحيح (باللون الأحمر). عدّل اختيارك وتحقّق مرة أخرى.`;}
+      upd();
+    };
+    d.appendChild(box);d.appendChild(btn);d.appendChild(fb);root.appendChild(d);}
+  root.appendChild(h('div',{id:'final',class:'fb',role:'status','aria-live':'polite'}));
+  upd();
+}
+$('#qReset').onclick=renderQuiz;
+renderQuiz();
+</script>
+
+</body></html>
